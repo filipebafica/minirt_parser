@@ -1,7 +1,7 @@
-NAME = miniRT_parser
-SOURCE = main.c 
+NAME = program
+SOURCE = main.c error_message.c load_file.c file_check_1.c utils_1.c
 
-VPATH = ./source/utils/
+VPATH = ./source/
 
 INCLUDES = ./includes/
 OBJECTS_DIR = ./objects/
@@ -11,7 +11,7 @@ LIBFT = ./libs/libft/libft.a
 LIBFT_INCLUDES = ./libs/libft/includes/
 LIBFT_DIR = ./libs/libft/
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -g -fsanitize=address -Wall -Werror -Wextra
 CC = gcc
 
 all: $(NAME)
@@ -33,4 +33,6 @@ clean:
 	@make clean -C $(LIBFT_DIR)
 
 fclean: clean
-	@rm $(NAME)
+	@rm -f $(NAME)
+
+re: fclean all

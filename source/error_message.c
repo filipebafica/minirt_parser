@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   headers.h                                          :+:      :+:    :+:   */
+/*   error_message.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 14:01:39 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/10 21:24:40 by fbafica          ###   ########.fr       */
+/*   Created: 2022/04/10 16:16:36 by fbafica           #+#    #+#             */
+/*   Updated: 2022/04/10 21:22:22 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADERS_H
-# define HEADERS_H
-# include "libft.h"
-# include <fcntl.h>
-# include <stdlib.h>
+#include "headers.h"
 
-typedef struct s_parameters
+int	send_error(char *error_message)
 {
-	
-}	t_parameters;
-
-				/*
-				* FILE PARSER 
-				*/
-int			file_check(char *file_name);
-int			load_file(char *file_name, char ***tokens);
-int			send_error(char *error_message);
-void		free_tokens(char **tokens);
-void		print_tokens(char **tokens);
-
-#endif
+	ft_putendl_fd(error_message, 2);
+	return (-1);
+}
