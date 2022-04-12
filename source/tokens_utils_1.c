@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_1.c                                          :+:      :+:    :+:   */
+/*   tokens_utils_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 19:27:28 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/10 19:43:41 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/12 11:52:43 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers.h"
 
-static int	get_tokens_len(char **tokens)
+int	get_tokens_len(char **tokens)
 {
 	int	i;
 

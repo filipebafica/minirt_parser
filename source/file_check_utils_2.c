@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 22:19:51 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/11 19:57:26 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/12 14:44:54 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,25 @@ void	space_handler(char **input)
 		}
 		++i;
 	}
+}
+
+int	check_if_digit(char *token)
+{
+	if (ft_strrchrlen(token, '.') > ft_strchrlen(token, '.'))
+		return (-1);
+	if (ft_strrchrlen(token, '+') > ft_strchrlen(token, '+'))
+		return (-1);
+	if (ft_strrchrlen(token, '-') > ft_strchrlen(token, '-'))
+		return (-1);
+	while (*token == '+' && *token == '-')
+		++token;
+	while (*token != '\0')
+	{
+		if (*token == '.')
+			++token;
+		if (!ft_isdigit(*token))
+			return (-1);
+		++token;
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 12:14:55 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/11 23:50:38 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/12 15:13:42 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,32 @@
 
 static void	update_a_parameters(char **a_tokens, t_parameters *p)
 {
-	(void)p;
-	(void)a_tokens;
+	p->a_lighting = ft_atof(a_tokens[1]);
+	p->a_color = malloc(sizeof(float) * 3);
+	p->a_color[0] = ft_atoi(a_tokens[2]);
+	p->a_color[1] = ft_atoi(a_tokens[4]);
+	p->a_color[2] = ft_atoi(a_tokens[6]);
 }
 
 static int validate_a_tokens(char **a_tokens)
 {
-	if (ft_strcmp(*a_tokens, "A"))
+	if (get_tokens_len(a_tokens) != 7)
+		return (-1);
+	if (ft_strcmp(a_tokens[0], "A"))
+		return (-1);
+	if (check_if_digit(a_tokens[1]) < 0 || \
+	ft_atof(a_tokens[1]) < 0 || ft_atof(a_tokens[1]) > 1)
+		return (-1);
+	if (ft_strcmp(a_tokens[3], ",") || ft_strcmp(a_tokens[5], ","))
+		return (-1);
+	if (check_if_digit(a_tokens[2]) < 0 || \
+	ft_atoi(a_tokens[2]) < 0 || ft_atoi(a_tokens[2]) > 255)
+		return (-1);
+	if (check_if_digit(a_tokens[4]) < 0 || \
+	ft_atoi(a_tokens[4]) < 0 || ft_atoi(a_tokens[4]) > 255)
+		return (-1);
+	if (check_if_digit(a_tokens[6]) < 0 || \
+	ft_atoi(a_tokens[6]) < 0 || ft_atoi(a_tokens[6]) > 255)
 		return (-1);
 	return (0);
 }

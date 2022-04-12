@@ -6,7 +6,7 @@
 #    By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/11 19:34:56 by fbafica           #+#    #+#              #
-#    Updated: 2022/04/11 23:26:04 by fbafica          ###   ########.fr        #
+#    Updated: 2022/04/12 11:49:14 by fbafica          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ LIBFT = ./libs/libft/libft.a
 LIBFT_INCLUDES = ./libs/libft/includes/
 LIBFT_DIR = ./libs/libft/
 
-FLAGS = -g -Wall -Werror -Wextra
+FLAGS = -g -fsanitize=address -Wall -Werror -Wextra
 CC = gcc
 
 all: $(NAME)

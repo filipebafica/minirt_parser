@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:18:56 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/11 23:18:03 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/12 02:20:14 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static int	get_decimals(const char *nptr)
 			j = 0;
 		++i;
 	}
+	if (i == j)
+		return (0);
 	return (j);
 }
 
@@ -37,6 +39,8 @@ static char	*get_concat_str(const char *nptr)
 
 	if (!ft_isdigit(*nptr))
 		++nptr;
+	if (!ft_strchr(nptr, '.'))
+		return (ft_strdup(nptr));
 	tmp_1 = ft_substr(nptr, 0, ft_strchrlen(nptr, '.'));
 	tmp_2 = ft_substr(nptr, ft_strchrlen(nptr, '.') + 1, ft_strlen(nptr));
 	concat = ft_strjoin(tmp_1, tmp_2);
@@ -103,8 +107,8 @@ float	ft_atof(const char *nptr)
 	concat_str = get_concat_str(nptr);
 	sig = get_sign(nptr);
 	decimals = get_decimals(nptr);
-	base = 10.0;
-	while (decimals > 1)
+	base = 1.0;
+	while (decimals > 0)
 	{
 		base *= 10.0;
 		--decimals;

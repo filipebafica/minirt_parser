@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 14:01:39 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/11 20:14:34 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/12 14:42:15 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,11 @@ int			check_for_l(char **tokens, t_parameters *p);
 int			check_for_obj(char **tokens, t_parameters *p);
 void		free_tokens(char **tokens);
 void		print_tokens(char **tokens);
+int			get_tokens_len(char **tokens);
 int			count_identifiers(char **tokens, char *identifier);
 int			get_line(char **tokens, char *identidier);
 void		space_handler(char **input);
 char		**tokenize_line(char *line);
+int			check_if_digit(char *token);
 
 #endif
