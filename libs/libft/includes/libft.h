@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 19:08:22 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/30 16:30:20 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/11 22:29:27 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 
 int		ft_atoi(const char *nptr);
+float	ft_atof(const char *nptr);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 int		ft_isalnum(int c);
