@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 14:26:19 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/12 14:46:11 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/12 22:22:46 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	p = malloc(sizeof(t_parameters));
+	init_allocated_parameters(p);
 	if (file_check(argv[1], p) == -1)
 		ft_putendl_fd("Erou!", 2);
-	free(p);
+	free_allocated_parameters(p);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 12:10:33 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/11 20:14:08 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/12 15:16:11 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	check_for_tab(char **file_tokens)
 {
 	int	i;
 
-	i  = 0;
+	i = 0;
 	while (file_tokens[i])
 	{
 		if (ft_strchr(file_tokens[i], '\t'))

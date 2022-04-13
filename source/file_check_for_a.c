@@ -6,59 +6,71 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 12:14:55 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/12 15:13:42 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/13 01:10:03 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers.h"
 
-static void	update_a_parameters(char **a_tokens, t_parameters *p)
+static void	update_a_parameters(char **tokens, t_parameters *p)
 {
-	p->a_lighting = ft_atof(a_tokens[1]);
-	p->a_color = malloc(sizeof(float) * 3);
-	p->a_color[0] = ft_atoi(a_tokens[2]);
-	p->a_color[1] = ft_atoi(a_tokens[4]);
-	p->a_color[2] = ft_atoi(a_tokens[6]);
+	p->a_lighting = (double) ft_atof(tokens[1]);
+	p->a_color = malloc(sizeof(double) * 3);
+	p->a_color[0] = (double) ft_atof(tokens[2]);
+	p->a_color[1] = (double) ft_atof(tokens[4]);
+	p->a_color[2] = (double) ft_atof(tokens[6]);
 }
 
-static int validate_a_tokens(char **a_tokens)
+static int	check_min_max(char **tokens)
 {
-	if (get_tokens_len(a_tokens) != 7)
+	if (ft_atoi(tokens[2]) < 0 || ft_atoi(tokens[2]) > 255)
 		return (-1);
-	if (ft_strcmp(a_tokens[0], "A"))
+	if (ft_atoi(tokens[4]) < 0 || ft_atoi(tokens[4]) > 255)
 		return (-1);
-	if (check_if_digit(a_tokens[1]) < 0 || \
-	ft_atof(a_tokens[1]) < 0 || ft_atof(a_tokens[1]) > 1)
-		return (-1);
-	if (ft_strcmp(a_tokens[3], ",") || ft_strcmp(a_tokens[5], ","))
-		return (-1);
-	if (check_if_digit(a_tokens[2]) < 0 || \
-	ft_atoi(a_tokens[2]) < 0 || ft_atoi(a_tokens[2]) > 255)
-		return (-1);
-	if (check_if_digit(a_tokens[4]) < 0 || \
-	ft_atoi(a_tokens[4]) < 0 || ft_atoi(a_tokens[4]) > 255)
-		return (-1);
-	if (check_if_digit(a_tokens[6]) < 0 || \
-	ft_atoi(a_tokens[6]) < 0 || ft_atoi(a_tokens[6]) > 255)
+	if (ft_atoi(tokens[6]) < 0 || ft_atoi(tokens[6]) > 255)
 		return (-1);
 	return (0);
 }
 
-int	check_for_a(char **tokens, t_parameters *p)
+static int	check_digit(char **tokens)
 {
-	char	**a_tokens;
+	if (check_if_digit(tokens[1]) == -1)
+		return (-1);
+	if (check_if_digit(tokens[2]) == -1)
+		return (-1);
+	if (check_if_digit(tokens[4]) == -1)
+		return (-1);
+	if (check_if_digit(tokens[6]) == -1)
+		return (-1);
+	return (0);
+}
+
+static int	validate_line(char **tokens)
+{
+	if (get_tokens_len(tokens) != 7)
+		return (send_error("Error\nA parameter: Bad number of elements"));
+	if (ft_strcmp(tokens[3], ",") || ft_strcmp(tokens[5], ","))
+		return (send_error("Error\nA parameter: Bad comma"));
+	if (check_digit(tokens) == -1)
+		return (send_error("Error\nA parameter: Bad digit"));
+	if (check_min_max(tokens) == -1)
+		return (send_error("Error\nA parameter: Bad min or max"));
+	return (0);
+}
+
+int	check_for_a(char **file_tokens, t_parameters *p)
+{
+	char	**tokens;
 	char	status;
 
 	status = 0;
-	if (count_identifiers(tokens, "A") != 1)
-		return (-1);
-	a_tokens = tokenize_line(tokens[get_line(tokens, "A")]);
-	if (validate_a_tokens(a_tokens) == -1)
+	if (count_identifiers(file_tokens, "A") != 1)
+		return (send_error("Error\nA parameter: There must be one A"));
+	tokens = tokenize_line(file_tokens[get_line(file_tokens, "A")]);
+	if (validate_line(tokens) == -1)
 		status = -1;
 	else
-		update_a_parameters(a_tokens, p);
-	(void)p;
-	free_tokens(a_tokens);
+		update_a_parameters(tokens, p);
+	free_tokens(tokens);
 	return (status);
 }
-

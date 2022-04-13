@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 16:55:34 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/12 13:28:42 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/13 02:16:31 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,13 @@ int	file_check(char *file_name, t_parameters *p)
 	else if (check_for_tab(file_tokens) == -1)
 		status = send_error("Error\n'\\t' is not a valid character");
 	else if (check_for_a(file_tokens, p) == -1)
-		status = send_error("Error\nBad Ambient Lightning parameter");
-	// else if (check_for_c(tokens, p) == -1)
-	// 	return (send_error("Error\Bad Camera parameter"));
-	// else if (check_for_l(tokens, p) == -1)
-	// 	return (send_error("Error\Bad Light parameter"));
+		status = -1;
+	else if (check_for_c(file_tokens, p) == -1)
+		status = -1;
+	else if (check_for_l(file_tokens, p) == -1)
+		status = -1;
 	// else if (check_for_obj(tokens, p) == -1)
-	// 	return (send_error("Error\Bad Object parameter"));
-	(void)p;
+	// 	return (send_error("Error\nBad Object parameter"));
 	free_tokens(file_tokens);
 	return (status);
 }

@@ -6,13 +6,15 @@
 #    By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/11 19:34:56 by fbafica           #+#    #+#              #
-#    Updated: 2022/04/12 11:49:14 by fbafica          ###   ########.fr        #
+#    Updated: 2022/04/13 02:17:05 by fbafica          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = program
-SOURCE = main.c error_message.c load_file.c file_check.c file_check_for_a.c \
-	file_check_utils_1.c file_check_utils_2.c tokens_utils_1.c \
+SOURCE = main.c \
+	file_check.c file_check_for_a.c file_check_for_c.c file_check_for_l.c \
+	file_check_utils_1.c file_check_utils_2.c \
+	error_message.c load_file.c tokens_utils_1.c \
 
 VPATH = ./source/
 

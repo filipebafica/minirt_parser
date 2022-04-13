@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 22:19:51 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/12 14:44:54 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/13 02:23:48 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	check_if_digit(char *token)
 		return (-1);
 	if (ft_strrchrlen(token, '-') > ft_strchrlen(token, '-'))
 		return (-1);
-	while (*token == '+' && *token == '-')
+	while (*token == '+' || *token == '-')
 		++token;
 	while (*token != '\0')
 	{
@@ -78,4 +78,31 @@ int	check_if_digit(char *token)
 		++token;
 	}
 	return (0);
+}
+
+void	init_allocated_parameters(t_parameters *p)
+{
+	p->a_color = NULL;
+	p->c_view_point = NULL;
+	p->c_orientation_vector = NULL;
+	p->l_light_point = NULL;
+	p->l_color = NULL;
+	p->object_head = NULL;
+}
+
+void	free_allocated_parameters(t_parameters *p)
+{
+	if (p->a_color)
+		free(p->a_color);
+	if (p->c_view_point)
+		free(p->c_view_point);
+	if (p->c_orientation_vector)
+		free(p->c_orientation_vector);
+	if (p->l_light_point)
+		free(p->l_light_point);
+	if (p->l_color)
+		free(p->l_color);
+	if (p->object_head)
+		free(p->object_head);
+	free(p);
 }
