@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 12:10:33 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/12 15:16:11 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/13 19:38:15 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,11 @@ int	get_line(char **file_tokens, char *identidier)
 		if (!ft_strcmp(*tmp, identidier))
 			break ;
 		free_tokens(tmp);
+		tmp = NULL;
 		++i;
 	}
-	free_tokens(tmp);
+	if (tmp)
+		free_tokens(tmp);
 	return (i);
 }
 

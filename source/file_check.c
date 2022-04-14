@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 16:55:34 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/13 02:16:31 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/13 20:39:57 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,12 @@ int	file_check(char *file_name, t_parameters *p)
 		status = -1;
 	else if (check_for_l(file_tokens, p) == -1)
 		status = -1;
-	// else if (check_for_obj(tokens, p) == -1)
-	// 	return (send_error("Error\nBad Object parameter"));
+	else if (check_for_sp(file_tokens, p) == -1)
+		status = -1;
+	else if (check_for_pl(file_tokens, p) == -1)
+		status = -1;
+	else if (check_for_cy(file_tokens, p) == -1)
+		status = -1;
 	free_tokens(file_tokens);
 	return (status);
 }

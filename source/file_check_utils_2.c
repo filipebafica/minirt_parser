@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 22:19:51 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/13 02:23:48 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/13 17:40:01 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,6 @@ void	free_allocated_parameters(t_parameters *p)
 	if (p->l_color)
 		free(p->l_color);
 	if (p->object_head)
-		free(p->object_head);
+		free_scene_object_param(p->object_head);
 	free(p);
 }

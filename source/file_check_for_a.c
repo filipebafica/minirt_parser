@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 12:14:55 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/13 01:10:03 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/13 21:00:25 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	check_for_a(char **file_tokens, t_parameters *p)
 
 	status = 0;
 	if (count_identifiers(file_tokens, "A") != 1)
-		return (send_error("Error\nA parameter: There must be one A"));
+		return (send_error("Error\nA parameter: It must be one A"));
 	tokens = tokenize_line(file_tokens[get_line(file_tokens, "A")]);
 	if (validate_line(tokens) == -1)
 		status = -1;
