@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 16:55:34 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/13 20:39:57 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/13 22:08:29 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	file_check(char *file_name, t_parameters *p)
 
 	status = 0;
 	if (ft_strcmp(ft_strrchr(file_name, '.'), ".rt") != 0)
-		status = send_error("Error\nBad extension");
+		return (send_error("Error\nBad extension"));
 	else if (load_file(file_name, &file_tokens) == -1)
-		status = send_error("Error\nCould not open the file");
+		return (send_error("Error\nCould not open the file"));
 	else if (check_for_tab(file_tokens) == -1)
 		status = send_error("Error\n'\\t' is not a valid character");
 	else if (check_for_a(file_tokens, p) == -1)
