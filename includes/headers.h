@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 14:01:39 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/13 21:05:49 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/14 19:19:08 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_parameters
 int			file_check(char *file_name, t_parameters *p);
 int			load_file(char *file_name, char ***tokens);
 int			send_error(char *error_message);
+int			check_for_invalid_line(char **file_tokens);
 int			check_for_tab(char **tokens);
 int			check_for_a(char **file_tokens, t_parameters *p);
 int			check_for_c(char **file_tokens, t_parameters *p);
