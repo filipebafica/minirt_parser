@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error_message_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 14:26:19 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/14 21:00:39 by fbafica          ###   ########.fr       */
+/*   Created: 2022/04/10 16:16:36 by fbafica           #+#    #+#             */
+/*   Updated: 2022/04/14 21:07:07 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers.h"
+#include "headers_bonus.h"
 
-int	main(int argc, char **argv)
+int	send_error(char *error_message)
 {
-	t_parameters	*p;
-
-	if (argc != 2)
-	{
-		ft_putendl_fd("Error\nBad arguments", 2);
-		return (1);
-	}
-	p = malloc(sizeof(t_parameters));
-	init_allocated_parameters(p);
-	if (file_check(argv[1], p) == -1)
-		ft_putendl_fd("Erou!", 2);
-	free_allocated_parameters(p);
-	return (0);
+	ft_putendl_fd(error_message, 2);
+	return (-1);
 }

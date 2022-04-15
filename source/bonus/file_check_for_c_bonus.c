@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file_check_for_l.c                                 :+:      :+:    :+:   */
+/*   file_check_for_c_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:58:59 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/13 21:00:55 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/14 21:07:25 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers.h"
+#include "headers_bonus.h"
 
-static void	update_a_parameters(char **tokens, t_parameters *p)
+static void	update_parameters(char **tokens, t_parameters *p)
 {
-	p->l_light_point = malloc(sizeof(double) * 3);
-	p->l_light_point[0] = (double) ft_atof(tokens[1]);
-	p->l_light_point[1] = (double) ft_atof(tokens[3]);
-	p->l_light_point[2] = (double) ft_atof(tokens[5]);
-	p->l_britghness = (double) ft_atof(tokens[6]);
-	p->l_color = malloc(sizeof(double) * 3);
-	p->l_color[0] = (double) ft_atof(tokens[7]);
-	p->l_color[1] = (double) ft_atof(tokens[9]);
-	p->l_color[2] = (double) ft_atof(tokens[11]);
+	p->c_view_point = malloc(sizeof(double) * 3);
+	p->c_view_point[0] = (double) ft_atof(tokens[1]);
+	p->c_view_point[1] = (double) ft_atof(tokens[3]);
+	p->c_view_point[2] = (double) ft_atof(tokens[5]);
+	p->c_orientation_vector = malloc(sizeof(double) * 3);
+	p->c_orientation_vector[0] = (double) ft_atof(tokens[6]);
+	p->c_orientation_vector[1] = (double) ft_atof(tokens[8]);
+	p->c_orientation_vector[2] = (double) ft_atof(tokens[10]);
+	p->c_fov = (double) ft_atof(tokens[11]);
 }
 
 static int	check_min_max(char **tokens)
@@ -33,13 +33,13 @@ static int	check_min_max(char **tokens)
 		return (-1);
 	if (ft_atof(tokens[5]) < MIN_FLOAT || ft_atof(tokens[5]) > MAX_FLOAT)
 		return (-1);
-	if (ft_atof(tokens[6]) < 0 || ft_atof(tokens[6]) > 1.0)
+	if (ft_atof(tokens[6]) < -1.0 || ft_atof(tokens[6]) > 1.0)
 		return (-1);
-	if (ft_atof(tokens[7]) < 0 || ft_atof(tokens[7]) > 255)
+	if (ft_atof(tokens[8]) < -1.0 || ft_atof(tokens[8]) > 1.0)
 		return (-1);
-	if (ft_atof(tokens[9]) < 0 || ft_atof(tokens[9]) > 255)
+	if (ft_atof(tokens[10]) < -1.0 || ft_atof(tokens[10]) > 1.0)
 		return (-1);
-	if (ft_atof(tokens[11]) < 0 || ft_atof(tokens[11]) > 255)
+	if (ft_atof(tokens[11]) < 0 || ft_atof(tokens[11]) > 180)
 		return (-1);
 	return (0);
 }
@@ -54,9 +54,9 @@ static int	check_digit(char **tokens)
 		return (-1);
 	if (check_if_digit(tokens[6]) == -1)
 		return (-1);
-	if (check_if_digit(tokens[7]) == -1)
+	if (check_if_digit(tokens[8]) == -1)
 		return (-1);
-	if (check_if_digit(tokens[9]) == -1)
+	if (check_if_digit(tokens[10]) == -1)
 		return (-1);
 	if (check_if_digit(tokens[11]) == -1)
 		return (-1);
@@ -66,30 +66,30 @@ static int	check_digit(char **tokens)
 static int	validate_line(char **tokens)
 {
 	if (get_tokens_len(tokens) != 12)
-		return (send_error("Error\nL parameter: Bad number of elements"));
+		return (send_error("Error\nC parameter: Bad number of elements"));
 	if (ft_strcmp(tokens[2], ",") || ft_strcmp(tokens[4], ",") || \
-	ft_strcmp(tokens[8], ",") || ft_strcmp(tokens[10], ","))
-		return (send_error("Error\nL parameter: Bad comma"));
+	ft_strcmp(tokens[7], ",") || ft_strcmp(tokens[9], ","))
+		return (send_error("Error\nC parameter: Bad comma"));
 	if (check_digit(tokens) == -1)
-		return (send_error("Error\nL parameter: Bad digit"));
+		return (send_error("Error\nC parameter: Bad digit"));
 	if (check_min_max(tokens) == -1)
-		return (send_error("Error\nL parameter: Bad min or max"));
+		return (send_error("Error\nC parameter: Bad min or max"));
 	return (0);
 }
 
-int	check_for_l(char **file_tokens, t_parameters *p)
+int	check_for_c(char **file_tokens, t_parameters *p)
 {
 	char	**tokens;
 	char	status;
 
 	status = 0;
-	if (count_identifiers(file_tokens, "L") != 1)
-		return (send_error("Error\nL parameter: It must be one L"));
-	tokens = tokenize_line(file_tokens[get_line(file_tokens, "L")]);
+	if (count_identifiers(file_tokens, "C") != 1)
+		return (send_error("Error\nC parameter: It must be one C"));
+	tokens = tokenize_line(file_tokens[get_line(file_tokens, "C")]);
 	if (validate_line(tokens) == -1)
 		status = -1;
 	else
-		update_a_parameters(tokens, p);
+		update_parameters(tokens, p);
 	free_tokens(tokens);
 	return (status);
 }
