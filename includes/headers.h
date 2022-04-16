@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 14:01:39 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/17 00:57:20 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/17 01:28:01 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int			check_if_digit(char *token);
 void		init_allocated_parameters(t_parameters *p);
 void		free_allocated_parameters(t_parameters *p);
 void		free_scene_object_param(t_scene_object_param *head);
+void		free_scene_light_param(t_scene_light_param *head);
 void		add_scene_object_param(t_parameters *p, t_scene_object_param *node);
 void		add_scene_light_param(t_parameters *p, t_scene_light_param *node);
 

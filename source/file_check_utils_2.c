@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 22:19:51 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/17 00:52:50 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/17 01:29:42 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ void	free_allocated_parameters(t_parameters *p)
 		free(p->c_view_point);
 	if (p->c_orientation_vector)
 		free(p->c_orientation_vector);
+	if (p->light_head)
+		free_scene_light_param(p->light_head);
 	if (p->object_head)
 		free_scene_object_param(p->object_head);
 	free(p);
