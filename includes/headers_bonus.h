@@ -6,12 +6,12 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 14:01:39 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/14 20:28:50 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/17 00:55:29 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADERS_H
-# define HEADERS_H
+#ifndef HEADERS_BONUS_H
+# define HEADERS_BONUS_H
 # define MAX_FLOAT 340282346638528859811704183484516925440.0000000000000000
 # define MIN_FLOAT -340282346638528859811704183484516925440.0000000000000000
 # include "libft.h"

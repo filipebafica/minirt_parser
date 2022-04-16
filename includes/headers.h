@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 14:01:39 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/14 19:19:08 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/17 00:57:20 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,14 @@
 # include "libft.h"
 # include <fcntl.h>
 # include <stdlib.h>
+
+typedef struct s_scene_light_param
+{
+	double							*l_light_point;
+	double							l_britghness;
+	double							*l_color;
+	struct s_scene_light_param		*next;
+}	t_scene_light_param;
 
 typedef struct s_scene_object_param
 {
@@ -36,10 +44,8 @@ typedef struct s_parameters
 	double					*c_view_point;
 	double					*c_orientation_vector;
 	double					c_fov;
-	double					*l_light_point;
-	double					l_britghness;
-	double					*l_color;
 	t_scene_object_param	*object_head;
+	t_scene_light_param		*light_head;
 }	t_parameters;
 
 				/*
@@ -68,5 +74,6 @@ void		init_allocated_parameters(t_parameters *p);
 void		free_allocated_parameters(t_parameters *p);
 void		free_scene_object_param(t_scene_object_param *head);
 void		add_scene_object_param(t_parameters *p, t_scene_object_param *node);
+void		add_scene_light_param(t_parameters *p, t_scene_light_param *node);
 
 #endif
