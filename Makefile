@@ -6,7 +6,7 @@
 #    By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/11 19:34:56 by fbafica           #+#    #+#              #
-#    Updated: 2022/04/15 00:28:57 by fbafica          ###   ########.fr        #
+#    Updated: 2022/04/17 22:15:21 by fbafica          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,20 +16,19 @@ BONUS = program_bonus
 SOURCE = main.c \
 	file_check.c file_check_for_a.c file_check_for_c.c file_check_for_l.c \
 	file_check_for_sp.c file_check_for_pl.c file_check_for_cy.c \
-	file_check_utils_1.c file_check_utils_2.c \
+	file_check_utils_1.c file_check_utils_2.c file_check_utils_3.c \
 	error_message.c load_file.c tokens_utils_1.c list_utils_1.c
 
 SOURCE_BONUS = main.c \
 	file_check.c file_check_for_a.c file_check_for_c.c file_check_for_l_bonus.c \
 	file_check_for_sp.c file_check_for_pl.c file_check_for_cy.c \
-	file_check_utils_1_bonus.c file_check_utils_2_bonus.c \
+	file_check_utils_1_bonus.c file_check_utils_2_bonus.c file_check_utils_3.c \
 	error_message.c load_file.c tokens_utils_1.c list_utils_1_bonus.c
 
 VPATH = ./source/
 
 INCLUDES = ./includes/
 HEADERS = ./includes/headers.h
-HEADERS_BONUS = ./includes/headers_bonus.h
 
 OBJECTS_DIR = ./objects/mandatory/
 OBJECTS_DIR_BONUS = ./objects/bonus/
@@ -40,7 +39,7 @@ LIBFT = ./libs/libft/libft.a
 LIBFT_INCLUDES = ./libs/libft/includes/
 LIBFT_DIR = ./libs/libft/
 
-FLAGS = -g -fsanitize=address -Wall -Werror -Wextra
+FLAGS = -g -lm -Wall -Werror -Wextra
 CC = gcc
 
 all: $(NAME)
@@ -53,10 +52,10 @@ $(NAME): $(OBJECTS_DIR) $(OBJECTS) $(LIBFT)
 $(BONUS): $(OBJECTS_DIR_BONUS) $(OBJECTS_BONUS) $(LIBFT)
 	@$(CC) $(OBJECTS_BONUS) $(LIBFT) $(FLAGS) -I $(LIBFT_INCLUDES) -o $@
 
-$(OBJECTS_DIR)%.o: %.c $(HEADERS) $(HEADERS_BONUS)
+$(OBJECTS_DIR)%.o: %.c $(HEADERS) $(HEADERS)
 	@$(CC) $(FLAGS) -c $< -I $(INCLUDES) -I $(LIBFT_INCLUDES) -o $@
 
-$(OBJECTS_DIR_BONUS)%.o: %.c $(HEADERS) $(HEADERS_BONUS)
+$(OBJECTS_DIR_BONUS)%.o: %.c $(HEADERS) $(HEADERS)
 	@$(CC) $(FLAGS) -c $< -I $(INCLUDES) -I $(LIBFT_INCLUDES) -o $@
 
 $(OBJECTS_DIR):

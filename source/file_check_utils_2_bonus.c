@@ -6,11 +6,11 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 22:19:51 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/14 20:24:21 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/17 21:48:35 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers_bonus.h"
+#include "headers.h"
 
 static void	add_space(char **input, int index)
 {

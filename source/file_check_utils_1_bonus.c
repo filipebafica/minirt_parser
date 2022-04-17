@@ -6,11 +6,11 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 12:10:33 by fbafica           #+#    #+#             */
-/*   Updated: 2022/04/14 21:07:41 by fbafica          ###   ########.fr       */
+/*   Updated: 2022/04/17 21:48:27 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers_bonus.h"
+#include "headers.h"
 
 int	count_identifiers(char **file_tokens, char *identifier)
 {
