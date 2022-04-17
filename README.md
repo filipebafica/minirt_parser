@@ -1,5 +1,5 @@
 # minirt_parser
-A file parser
+A file parser.
 
 # about
 This program takes a given file with extension `.rt` and will parses it into a C struct.\
