@@ -20,22 +20,33 @@ and parses it into a C struct.:
 ```
 typedef struct s_scene_light_param
 {
-	double                        *l_light_point;
-	double                        l_britghness;
-	double                        *l_color;
-	struct s_scene_light_param    *next;
+	double                        	*l_light_point;
+	double                        	l_britghness;
+	double                        	*l_color;
+	struct s_scene_light_param    	*next;
 }	t_scene_light_param;
 
 typedef struct s_scene_object_param
 {
-	char                          *identifier;
-	double                        *cordinates;
-	double                        *color;
-	double                        *orientation_vector;
-	double                        diameter;
-	double                        height;
-	struct s_scene_object_param   *next;
-}
+	char                          	*identifier;
+	double                        	*cordinates;
+	double                        	*color;
+	double                        	*orientation_vector;
+	double                        	diameter;
+	double                        	height;
+	struct s_scene_object_param   	*next;
+}	t_scene_object_param;
+
+typedef struct s_parameters
+{
+	double				a_lighting;
+	double				a_color;
+	double				*c_view_point;
+	double				*c_orientation_vector;
+	double				c_fov;
+	t_scene_object_param		*object_head;
+	t_scene_light_param		*light_head;
+}	t_parameters;
 ```
 This project is part of 42 École/ 42 SP curriculum.
 
